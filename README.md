@@ -25,7 +25,7 @@ Para utilizar o sistema, siga os seguintes passos:
 ## Uso
 Ao executar a aplicação, o usuário verá o seguinte menu:
 
-[Menu Inicial](C:\Users\HP\Desktop\CURSO LUCIANA\Trabalho Individual Modulo 2\Central de Compatibilidade\Central-de-Compatibilidade\Imagens\Menu Inicial.png)
+![Menu Inicial](https://github.com/luhonunes/Central-de-Compatibilidade/blob/main/Imagens/Menu%20Inicial.png)
 
 Para cadastrar um novo candidato, basta selecionar a opção 1 e preencher as informações solicitadas (nome, notas nas diferentes avaliações, etc.). Para ver a lista de candidatos cadastrados, basta selecionar a opção 2. Para buscar candidatos que atendam a um conjunto mínimo de notas nas diferentes avaliações, basta selecionar a opção 3 e informar as notas mínimas desejadas. Para excluir um candidato da base de dados, basta selecionar a opção 4 e informar o nome do candidato a ser excluído.
 
