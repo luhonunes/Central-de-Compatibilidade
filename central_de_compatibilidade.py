@@ -41,6 +41,24 @@ def excluir_candidato(lista_candidatos, nome):
                 print(f'Candidato {nome_candidato} não encontrado')#caso nome nao for encontrado, retorna a informação
                 print('-'*60)
             return
+        
+#Função para verificar se o input pode ser convertido para int       
+def verifica_numero (nota):
+    while True:
+        try:
+            valor = int(input(nota))
+            return valor
+        except ValueError: #Mensagem de erro para valores inválidos
+            print('Valor inválido para a nota do candidato. Por favor, digite um número inteiro.')
+
+#Função para verificar se a lista de candidatos esta vazia            
+def lista_vazia(lista):
+    if len(lista) == 0: #Mensagem em caso de lista vazia
+        print('A lista está vazia. Por favor, insira um novo candidato.')
+        print('=' * 60)
+        return True
+    return False
+
 
 #Inicia o Programa com uma saudação
 print('\nOlá, seja Bem Vindo(a) a Central de Compatibilidade!')
@@ -66,29 +84,20 @@ while True:  #Loop Principal
             print('='*60)
             if nome == '0': #confirma se o usuario quer retornar ao menu inicial
                 break          
-            e = (input('Digite a nota do candidato na entrevista: ')) 
-            t = (input('Digite a nota do candidato no teste teórico: '))
-            p = (input('Digite a nota do candidato no teste prático: '))
-            s = (input('Digite a nota do candidato na avaliação de soft skills: '))
+            e = verifica_numero('Digite a nota do candidato na entrevista: ') 
+            t = verifica_numero('Digite a nota do candidato no teste teórico: ')
+            p = verifica_numero('Digite a nota do candidato no teste prático: ')
+            s = verifica_numero('Digite a nota do candidato na avaliação de soft skills: ')
             print('-'*60)
-            try: #Verifica se o valor inserido pode ser convertido para um número inteiro
-                e = int(e)
-                t = int(t)
-                p = int(p)
-                s = int(s)
-            except: # Exibe mensagem caso algum valor digitado nao seja o desejado
-                print('Valor inválido para a nota do candidato. Por favor, digite um número inteiro.')
-                print('-'*60)
-                continue
+            
             lista_candidatos.append({'nome': nome, 'e': e, 't': t, 'p': p, 's': s}) #Adicionando Candidatos a Lista
             print(f'Candidato {nome} cadastrado com sucesso!') #Mensagem de confirmação
             print('-'*60)
             
     elif opcao == '2': #Ver lista de candidato
         
-        if len(lista_candidatos) == 0: #Verificação de lista vazia
-            print ('A lista está vazia, por favor insira um novo candidato.')
-            print('='*60)
+        if lista_vazia(lista_candidatos):
+            continue
         else:
             print('Lista de candidatos:')
             for candidato in lista_candidatos: #percorre a lista e exibe os candidatos em lista e formatado
@@ -97,26 +106,16 @@ while True:  #Loop Principal
             
     elif opcao == '3': #Buscar candidato por nota, usando as notas digitadas a seguir como parametros
         
-        if len(lista_candidatos) == 0: #Verificação de lista vazia
-            print ('A lista está vazia, por favor insira um novo candidato.')
-            print('='*60)
+        if lista_vazia(lista_candidatos):
+            continue
         else:
             while True:
-                nota_e = (input('Digite a nota mínima da entrevista: '))   
-                nota_t = (input('Digite a nota mínima do teste teórico: '))
-                nota_p = (input('Digite a nota mínima do teste prático: '))
-                nota_s = (input('Digite a nota mínima da avaliação de soft skills: '))
+                nota_e = verifica_numero('Digite a nota mínima da entrevista: ')   
+                nota_t = verifica_numero('Digite a nota mínima do teste teórico: ')
+                nota_p = verifica_numero('Digite a nota mínima do teste prático: ')
+                nota_s = verifica_numero('Digite a nota mínima da avaliação de soft skills: ')
                 print('-'*60)
                 
-                try: #Verifica se o valor inserido pode ser convertido para um número inteiro
-                    nota_e = int(nota_e)
-                    nota_t = int(nota_t)
-                    nota_p = int(nota_p)
-                    nota_s = int(nota_s)    
-                except: # Exibe mensagem caso algum valor digitado nao seja o desejado
-                    print('Valor inválido para a nota do candidato. Por favor, digite um número inteiro.')
-                    print('-'*60)
-                    continue  
                 print('Candidatos Encontrados: ')
                 candidatos_encontrados=buscar_candidato(lista_candidatos, nota_e, nota_t, nota_p, nota_s) #Chamando a função Buscar candidatos
                 if len(candidatos_encontrados) == 0: #Verifica se a lista retornada é vazia
@@ -129,9 +128,8 @@ while True:  #Loop Principal
             
     elif opcao == '4': #Excluir candidato
         
-        if len(lista_candidatos) == 0: #Verificação de lista vazia
-            print ('A lista está vazia, por favor insira um novo candidato.')
-            print('='*60)
+        if lista_vazia(lista_candidatos):
+            continue
         else:
             while True:
                 nome_candidato = input('Digite o nome do candidato a ser excluído (ou 0 para voltar ao Menu Inicial): ')
