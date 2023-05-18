@@ -18,29 +18,29 @@ def buscar_candidato(lista_candidatos, nota_e, nota_t, nota_p, nota_s):
 
 #Função para excluir candidatos
 def excluir_candidato(lista_candidatos, nome):
-    for candidato in lista_candidatos:
-        
-        while True:
-            if candidato['nome'] == nome: #Verifica se o nome consta na lista
-                excluir=input(f'Certeza que deseja excluir o candidato {nome_candidato}? (sim/nao):') #Mensagem de verificação
+    candidato_encontrado = False  # Variável para indicar se o candidato foi encontrado ou não
+    
+    for candidato in lista_candidatos:       
+        if candidato['nome'] == nome: #Verifica se o nome consta na lista
+            while True:
+                excluir = input(f'Certeza que deseja excluir o candidato {nome}? (sim/nao):') #Mensagem de verificação
                 print('-'*60)
-                if excluir.lower () not in ['sim','nao']: #verifica se o dado corresponde as opções
-                    print(f"Opçao Inválida. Digite 'sim' para excluir {nome_candidato} ou 'nao' para retornar ao Menu Principal.") #mensagem caso o valor nao corresponda
+                if excluir.lower () == 'sim': #verifica se o dado corresponde as opções
+                    lista_candidatos.remove(candidato)  # remove candidato
+                    print(f'Candidato {nome} excluído com sucesso!')  # mensagem de sucesso na exclusão
+                    print('='* 60)
+                elif excluir.lower() == 'nao':
+                    print('='*60)
+                else:
+                    print(f"Opção Inválida. Digite 'sim' para excluir {nome} ou 'nao' para retornar ao Menu Principal.")  # mensagem caso o valor não corresponda
                     print('-'*60)
                     continue
-                else:
-                    if excluir == 'sim':
-                        lista_candidatos.remove(candidato) #remove candidato
-                        print(f'Candidato {nome_candidato} excluído com sucesso!') #mensagem de sucesso na exclusão
-                        print('='*60)
-                        return 
-                    elif excluir == 'nao':
-                        print('='*60)
-                        return
-            else:
-                print(f'Candidato {nome_candidato} não encontrado')#caso nome nao for encontrado, retorna a informação
-                print('-'*60)
-            return
+                candidato_encontrado = True  # Indica que o candidato foi encontrado
+                break  # Sai do loop após excluir o candidato
+
+    if not candidato_encontrado:
+        print(f'Candidato {nome} não encontrado')  # caso nome não for encontrado, retorna a informação
+        print('-'*60)
         
 #Função para verificar se o input pode ser convertido para int       
 def verifica_numero (nota):
