@@ -18,8 +18,9 @@ As principais funcionalidades do sistema são:
 Para utilizar o sistema, siga os seguintes passos:
 
 - Clone o repositório em sua máquina local.
+- Para a execução do programa é necessario baixar os dois arquivos contidos na Pasta "Projeto-Python" em uma mesma pasta no seu terminal para que a importação de dados não seja comprometida.
 - Certifique-se de que você tenha Python 3 instalado em sua máquina.
-- Execute o arquivo em seu terminal Python.
+- Execute o arquivo "central_de_compatibilidade" em seu terminal Python.
 - Siga as instruções do menu principal.
 
 ## Uso
@@ -31,5 +32,7 @@ Para cadastrar um novo candidato, basta selecionar a opção 1 e preencher as in
 
 ## Autor
 Esse projeto foi desenvolvido por Luciana Otávio Nunes.
-LinkedIn : [Linkedin](https://www.linkedin.com/in/luhonunes/)
+
+[LinkedIn](https://www.linkedin.com/in/luhonunes/)
+
 E-mail : (lucianaotnunes@gmail.com)
